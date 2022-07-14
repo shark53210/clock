@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>手刻時鐘設計練習</title>
+  <link rel="stylesheet" href="./dist/style.min.css">
+  <script src="https://cdn.bootcdn.net/ajax/libs/dayjs/1.4.1/dayjs.min.js"></script>
+</head>
+
+<body>
+  <div class="clock">
+    <div class="clock__face">
+      <div class="clock__face__hand secHand"></div>
+      <div class="clock__face__hand minHand"></div>
+      <div class="clock__face__hand hourHand"></div>
+      <div class="clock__face__number">
+        <div class="clock__face__number--12">12</div>
+        <div class="clock__face__number--3">3</div>
+        <div class="clock__face__number--6">6</div>
+        <div class="clock__face__number--9">9</div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+  <script>
+
+    let hourHand = document.querySelector( '.hourHand' )
+    let minHand = document.querySelector( '.minHand' )
+    let secHand = document.querySelector( '.secHand' )
+
+    function clock () {
+
+      let getSec = dayjs().format( 'ss' );
+      let getMin = dayjs().format( 'mm' );
+      let getHour = dayjs().format( 'HH' );
+
+      let secDegree = 360 / 60 * getSec
+      let minDegree = 360 / 60 * getMin + 360 / 60 / 60 * getSec
+      let hourDegree = 360 / 12 * ( getHour % 12 ) + 360 / 12 / 60 * getMin
+
+      secHand.style.transform = `rotate(${secDegree}deg)`
+      minHand.style.transform = `rotate(${minDegree}deg)`
+      hourHand.style.transform = `rotate(${hourDegree}deg)`
+
+    }
+    clock();
+    setInterval( clock, 1000 )
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+* {
+  box-sizing: border-box;
+}
+
+$primary: #00a99e;
+
+body {
+  margin: 0 auto;
+  background-color: $primary;
+
+  .clock {
+    width: 450px;
+    height: 450px;
+    background-color: white;
+    border-radius: 100%;
+    margin: 30px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    border: 20px solid #68d6cf;
+
+    &__face {
+      width: 100%;
+      height: 100%;
+      position: relative;
+
+
+      &__hand {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+
+      .secHand::after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 5px;
+        height: 40%;
+        bottom: 50%;
+        left: 50%;
+        background-color: red;
+        transform: translate(-50%, 0);
+      }
+
+      .minHand::after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 10px;
+        height: 35%;
+        bottom: 50%;
+        left: 50%;
+        background-color: #000;
+        transform: translate(-50%, 0);
+        border-radius: 10px 10px 0 0;
+      }
+
+      .hourHand::after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 15px;
+        height: 20%;
+        bottom: 50%;
+        left: 50%;
+        background-color: #000;
+        transform: translate(-50%, 0);
+        border-radius: 10px 10px 0 0;
+      }
+
+      &__number {
+        font-size: 60px;
+        position: relative;
+        text-align: center;
+        width: 100%;
+        height: 100%;
+
+        &--12 {
+          position: absolute;
+          left: 50%;
+          transform: translate(-50%);
+        }
+
+        &--3 {
+          position: absolute;
+          left: 90%;
+          bottom: 40%;
+          transform: translate(-50%);
+
+        }
+
+        &--6 {
+          position: absolute;
+          left: 50%;
+          bottom: 0%;
+          transform: translate(-50%);
+        }
+
+        &--9 {
+          position: absolute;
+          left: 5%;
+          bottom: 40%;
+
+        }
+      }
+    }
+  }
+}
